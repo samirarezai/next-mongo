@@ -10,13 +10,18 @@ export async function GET(request) {
     });
 }
 
-export async function POST(request) {
-    const { name, email, age } = await request.json();
-    await dbConnect();
-    const newUser = new User({ name, email, age });
-    await newUser.save();
-    return new Response(JSON.stringify(newUser), {
-        status: 201,
-        headers: { 'Content-Type': 'application/json' },
-    });
+export async function POST(request, res) {
+    try {
+        const { name, email, age } = await request.json();
+        await dbConnect();
+        const newUser = new User({ name, email, age });
+        await newUser.save();
+        return new Response(JSON.stringify(newUser), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }catch (error) {
+        console.log(error)
+        res.status(500).json({ error: 'Server error' });
+    }
 }

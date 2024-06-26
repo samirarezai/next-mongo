@@ -3,6 +3,7 @@ import Image from "next/image";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {string} from "prop-types";
+import Add from "@/app/components/users/add";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -25,6 +26,7 @@ export default function Home() {
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <h1>Users</h1>
+          <Add/>
         <ul>
           {!loading ? users.map((user: { _id: string, name: string, email: string, age: number }) => (
               <li key={user._id}>
