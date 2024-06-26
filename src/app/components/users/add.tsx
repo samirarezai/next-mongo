@@ -7,7 +7,7 @@ const Add:FC<{
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        age: null
+        age: ''
     });
 
     const handleSubmit = async (e : any) => {
@@ -23,7 +23,7 @@ const Add:FC<{
                 setFormData({
                     name: '',
                     email: '',
-                    age: 0
+                    age: ''
                 });
                 callback();
             } else {
