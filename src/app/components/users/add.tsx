@@ -10,7 +10,7 @@ const Add:FC<{
         age: 0
     });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e : any) => {
         e.preventDefault();
 
         try {
@@ -34,7 +34,7 @@ const Add:FC<{
         }
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e : any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
