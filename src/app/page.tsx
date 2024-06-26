@@ -9,24 +9,24 @@ export default function Home() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const res = await axios.get('/api/users');
-        setUsers(res.data);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-      }
-    };
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get('/api/users');
+      setUsers(res.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchUsers();
   }, []);
 
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <h1>Users</h1>
-          <Add/>
+          <Add callback={fetchUsers}/>
         <ul>
           {!loading ? users.map((user: { _id: string, name: string, email: string, age: number }) => (
               <li key={user._id}>

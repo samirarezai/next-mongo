@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import axios from "axios";
 
-const Add = () => {
+const Add:FC<{
+    callback:()=>void
+}> = ({callback}) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -23,6 +25,7 @@ const Add = () => {
                     email: '',
                     age: 0
                 });
+                callback();
             } else {
                 console.error('Failed to create user');
             }
