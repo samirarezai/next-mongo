@@ -2,11 +2,11 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {string} from "prop-types";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -15,7 +15,6 @@ export default function Home() {
         setUsers(res.data);
         setLoading(false);
       } catch (err) {
-        setError(err);
         setLoading(false);
       }
     };
@@ -23,18 +22,15 @@ export default function Home() {
     fetchUsers();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <h1>Users</h1>
         <ul>
-          {users.map(user => (
+          {!loading ? users.map((user: { _id: string, name: string, email: string, age: number }) => (
               <li key={user._id}>
                 {user.name} - {user.email} - {user.age}
               </li>
-          ))}
+          )) : <p>Loading...</p>}
         </ul>
       </main>
   );

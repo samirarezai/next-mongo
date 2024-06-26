@@ -1,8 +1,8 @@
 // lib/mongodb.js
 
-import mongoose from 'mongoose';
+import mongoose, {ConnectOptions} from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
 if (!MONGODB_URI) {
     throw new Error(
@@ -22,9 +22,9 @@ async function dbConnect() {
     }
 
     if (!cached.promise) {
-        const opts = {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        const opts : ConnectOptions = {
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
         };
 
         cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
