@@ -45,6 +45,7 @@ const Add:FC<{
             <div className="mb-4">
                 <label htmlFor="name">Name</label>
                 <input id="name" name="name" type="text" value={formData.name}
+                       required
                        onChange={handleChange}/>
             </div>
             <div className="mb-4">
@@ -52,11 +53,13 @@ const Add:FC<{
                 <label htmlFor="email">Email
                 </label>
                 <input id="email" name="email" type="text" value={formData.email}
+                       required
                        onChange={handleChange}/>
             </div>
             <div className="mb-4">
                 <label htmlFor="age">Age</label>
                 <input type="number" id="age" name="age" value={formData.age}
+                       required
                        onChange={handleChange}/>
             </div>
 

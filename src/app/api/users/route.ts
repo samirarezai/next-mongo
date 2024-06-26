@@ -13,6 +13,14 @@ export async function GET(request) {
 export async function POST(request, res) {
     try {
         const { name, email, age } = await request.json();
+        // Basic validation
+        if (!name || !email || !age) {
+            return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
         await dbConnect();
         const newUser = new User({ name, email, age });
         await newUser.save();
