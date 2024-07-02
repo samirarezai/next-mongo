@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {string} from "prop-types";
 import Add from "@/app/components/users/add";
+import Search from "@/app/components/search";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <Search></Search>
         <h1>Users</h1>
           <Add callback={fetchUsers}/>
         <ul>
