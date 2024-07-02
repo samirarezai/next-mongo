@@ -1,4 +1,4 @@
-// config/swagger.ts
+
 import swaggerJsdoc from 'swagger-jsdoc';
 import { OpenAPIV3 } from 'openapi-types';
 import path from 'path';
