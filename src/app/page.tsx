@@ -28,11 +28,11 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <Search></Search>
         <h1>Users</h1>
-          <Add callback={fetchUsers}/>
+          {/*<Add callback={fetchUsers}/>*/}
         <ul>
-          {!loading ? users.map((user: { _id: string, name: string, email: string, age: number }) => (
+          {!loading ? users.map((user: { _id: string, username: string, email: string, isVerified: number }) => (
               <li key={user._id}>
-                {user.name} - {user.email} - {user.age}
+                {user.username} - {user.email} - {user.isVerified ? "Verified User" : "Unverified User"}
               </li>
           )) : <p>Loading...</p>}
         </ul>
