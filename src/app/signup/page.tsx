@@ -27,7 +27,7 @@ export default function SignupPage() {
 
     return (
         <div>
-            <label htmlFor="username">username</label>
+            <label htmlFor="username" className="">username</label>
             <input
                 id="username"
                 type="text"
