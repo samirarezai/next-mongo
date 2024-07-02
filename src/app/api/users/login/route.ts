@@ -27,6 +27,10 @@ export async function POST(request: NextRequest){
             return NextResponse.json({error: "Invlid password"}, {status: 400})
         }
 
+        if(!user?.isVerified){
+            return NextResponse.json({error: "User has not verified"}, {status: 403})
+        }
+
 //create token data
 // A JavaScript object (tokenData) is created to store essential user
 // information. In this case, it includes the user's unique identifier (id),
